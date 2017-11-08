@@ -17,7 +17,7 @@ module Admin::Resources::TableHelper
       key = key.gsub(".", " ") if key.to_s.match(/\./)
       content = model.human_attribute_name(key)
 
-      if params[:action].eql?('index') && model.typus_options_for(:sortable)
+      if params && params[:action].eql?('index') && model.typus_options_for(:sortable)
         association = model.reflect_on_association(key.to_sym)
         order_by = association ? association.foreign_key : key
 
